@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战救指挥可视化监控大屏 - 演示</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .header p {
+            font-size: 1.2em;
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+        .demo-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .demo-section h2 {
+            color: #409eff;
+            margin-top: 0;
+            border-bottom: 2px solid #409eff;
+            padding-bottom: 10px;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #409eff;
+        }
+        .feature-item h3 {
+            margin: 0 0 10px 0;
+            color: #ffffff;
+        }
+        .feature-item p {
+            margin: 0;
+            opacity: 0.9;
+        }
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .tech-item {
+            background: rgba(64, 158, 255, 0.2);
+            border: 1px solid #409eff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .launch-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #409eff, #67c23a);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 20px 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(64, 158, 255, 0.3);
+        }
+        .launch-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(64, 158, 255, 0.4);
+        }
+        .screenshot {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .screenshot img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .instructions h3 {
+            color: #67c23a;
+            margin-top: 0;
+        }
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 战救指挥可视化监控大屏</h1>
+            <p>基于 Vue 3 + Element Plus 构建的专业军事医疗监控系统</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎯 项目概述</h2>
+            <p>这是一个专为军事医疗救援场景设计的可视化监控大屏系统，采用现代化的前端技术栈，提供实时数据展示、地图可视化、预警提醒等功能。</p>
+            
+            <div class="launch-buttons" style="text-align: center;">
+                <a href="http://localhost:5173" class="launch-button" target="_blank">
+                    🚀 启动应用
+                </a>
+                <a href="https://github.com" class="launch-button" target="_blank">
+                    📁 查看源码
+                </a>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>✨ 核心功能</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>📊 全域医疗力量监控</h3>
+                    <p>实时展示建制卫勤力量、机动卫勤力量、野战医院、后方医院等关键医疗资源分布情况</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📦 卫勤物资情况管理</h3>
+                    <p>监控关键物资消耗量、库存水平、消耗速率，支持预警和补充提醒</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🗺️ 战场情况可视化</h3>
+                    <p>集成高德地图，展示医院位置、后送路径、实时警示信息</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📈 战救效率统计</h3>
+                    <p>分析检伤分类时间、手术等待时间、后送周转时间等关键指标</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🚑 医疗后送能力</h3>
+                    <p>监控运力数量、医护力量、实时状态，提供预警功能</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🔄 实时数据更新</h3>
+                    <p>支持30秒自动更新，WebSocket实时推送，确保数据时效性</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🛠️ 技术栈</h2>
+            <div class="tech-stack">
+                <span class="tech-item">Vue 3</span>
+                <span class="tech-item">Element Plus</span>
+                <span class="tech-item">高德地图 API</span>
+                <span class="tech-item">Vite</span>
+                <span class="tech-item">CSS3</span>
+                <span class="tech-item">JavaScript ES6+</span>
+                <span class="tech-item">Flex 布局</span>
+                <span class="tech-item">响应式设计</span>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎨 界面特色</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>🎯 专业军事风格</h3>
+                    <p>深蓝渐变背景，毛玻璃效果，专业军事监控界面设计</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📱 响应式适配</h3>
+                    <p>支持1920x1080、1600x900、1366x768等多种分辨率</p>
+                </div>
+                <div class="feature-item">
+                    <h3>✨ 动画效果</h3>
+                    <p>悬停动画、渐变过渡、专业视觉效果</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🚨 预警系统</h3>
+                    <p>红色警告标识，关键信息高亮显示</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 快速开始</h2>
+            <div class="instructions">
+                <h3>1. 环境要求</h3>
+                <div class="code-block">
+Node.js >= 16.0.0<br>
+npm >= 8.0.0
+                </div>
+
+                <h3>2. 安装依赖</h3>
+                <div class="code-block">
+npm install
+                </div>
+
+                <h3>3. 启动开发服务器</h3>
+                <div class="code-block">
+npm run dev
+                </div>
+
+                <h3>4. 访问应用</h3>
+                <div class="code-block">
+http://localhost:5173
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>⚙️ 配置说明</h2>
+            <div class="instructions">
+                <h3>高德地图API配置</h3>
+                <p>在 <code>src/App.vue</code> 中配置您的高德地图API密钥和安全码：</p>
+                <div class="code-block">
+// 高德安全码配置<br>
+window._AMapSecurityConfig = {<br>
+&nbsp;&nbsp;securityJsCode: "您的安全码"<br>
+}<br><br>
+// 地图API密钥<br>
+key: "您的地图API密钥"
+                </div>
+
+                <h3>数据接口配置</h3>
+                <p>在 <code>src/services/dataService.js</code> 中配置后端API接口：</p>
+                <div class="code-block">
+export const getMedicalForces = async () => {<br>
+&nbsp;&nbsp;const response = await fetch('/api/medical-forces')<br>
+&nbsp;&nbsp;return response.json()<br>
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📋 项目结构</h2>
+            <div class="code-block">
+src/<br>
+├── App.vue                 # 主组件<br>
+├── main.js                 # 入口文件<br>
+├── services/<br>
+│   └── dataService.js      # 数据服务（模拟后端API）<br>
+└── assets/                 # 静态资源
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🎯 使用场景</h2>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>🏥 军事医疗指挥中心</h3>
+                    <p>实时监控战场医疗资源分布和救援效率</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🚑 应急医疗救援</h3>
+                    <p>自然灾害、突发事件医疗资源调度</p>
+                </div>
+                <div class="feature-item">
+                    <h3>📊 医疗数据分析</h3>
+                    <p>医疗效率分析、资源优化配置</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎓 教学演示</h3>
+                    <p>军事医学、应急管理教学演示</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>📞 技术支持</h2>
+            <p>如有问题或建议，请联系开发团队。项目采用MIT许可证，欢迎贡献代码和提出改进建议。</p>
+            
+            <div style="text-align: center; margin-top: 30px;">
+                <p style="opacity: 0.8;">© 2024 战救指挥可视化监控大屏系统</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
