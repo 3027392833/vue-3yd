@@ -125,7 +125,7 @@ defineProps({
   padding: 8px 4px;
   text-align: center;
   border-bottom: 2px solid #2a4a6b;
-  font-size: 12px;
+  font-size: 14px;
   font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
   letter-spacing: 0.5px;
   white-space: nowrap;

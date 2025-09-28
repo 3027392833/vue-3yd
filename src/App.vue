@@ -3,7 +3,7 @@ import { ref, onMounted, reactive, onUnmounted } from 'vue'
 import MedicalForces from './components/MedicalForces.vue'
 import Supplies from './components/Supplies.vue'
 import Efficiency from './components/Efficiency.vue'
-import Transport from './components/Transport.vue'
+import Transport from './components/Transport copy.vue'
 import AlertBar from './components/AlertBar.vue'
 import MapSection from './components/MapSection.vue'
 import { 
