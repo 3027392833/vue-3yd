@@ -43,9 +43,37 @@ export const getEfficiency = async () => {
 export const getTransport = async () => {
   await delay(500)
   return {
-    vehicles: 45,
-    medicalStaff: 260,
+    // 运输车数据
+    vehicles: {
+      total: 25,
+      available: 20,
+      inTransit: 3,
+      damaged: 2
+    },
+    // 无人机数据
+    drones: {
+      total: 12,
+      available: 8,
+      inTransit: 2,
+      damaged: 2
+    },
+    // 直升机数据
+    helicopters: {
+      total: 8,
+      available: 6,
+      inTransit: 1,
+      damaged: 1
+    },
+    // 医护力量
+    medicalStaff: {
+      total: 260,
+      available: 200,
+      inTransit: 60,
+      damaged: 0
+    },
+    // 总体可用率
     availability: 78,
+    // 总体损耗率
     lossRate: 12,
     warning: '存在 5 起'
   }
@@ -77,11 +105,13 @@ export const getMapMarkers = async () => {
 // 后送路径数据
 export const getTransportRoutes = async () => {
   await delay(500)
-  return [
-    [120.08, 30.20],
-    [120.10, 30.22],
-    [120.12, 30.24]
-  ]
+  return {
+    startPoint: [120.08, 30.20], // 起点坐标
+    endPoint: [120.12, 30.24],   // 终点坐标
+    waypoints: [                 // 途经点（可选）
+      [120.10, 30.22]
+    ]
+  }
 }
 
 // 实时数据更新（模拟WebSocket或定时轮询）
