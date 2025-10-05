@@ -158,7 +158,7 @@ onMounted(() => {
   flex: 0.9;
   position: relative;
   background: rgba(26, 26, 46, 0.3);
-  border-radius: 8px;
+  border-radius: 20px;
   overflow: hidden;
   border: 1px solid #2a4a6b;
 }

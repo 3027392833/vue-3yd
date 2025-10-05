@@ -1,138 +1,167 @@
 // 战救指挥可视化监控大屏数据服务
-// 模拟后端API接口
+// 真实后端API接口
 
-// 模拟API延迟
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
+import axios from 'axios'
+
+// 创建axios实例
+const api = axios.create({
+  baseURL: 'http://localhost:3000/api',
+  timeout: 10000, // 10秒超时
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+
+// 统一错误处理
+const handleApiError = (error) => {
+  console.error('API调用失败:', error)
+  if (error.response) {
+    throw new Error(`API错误: ${error.response.status} - ${error.response.data.message || '未知错误'}`)
+  } else if (error.request) {
+    throw new Error('网络连接失败，请检查后端服务是否启动')
+  } else {
+    throw new Error(`请求配置错误: ${error.message}`)
+  }
+}
 
 // 全域医疗力量数据
 export const getMedicalForces = async () => {
-  await delay(500) // 模拟网络延迟
-  return {
-    institutional: 120,
-    mobile: 80,
-    fieldHospital: 6,
-    rearHospital: 12,
-    localHospital: 15,
-    casualties: 23
+  try {
+    const response = await api.get('/medical-forces')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取医疗力量数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
   }
 }
 
 // 卫勤物资情况数据
 export const getSupplies = async () => {
-  await delay(500)
-  return {
-    keyConsumption: 230,
-    stockLevel: 85,
-    consumptionRate: 12,
-    replenishment: 1200
+  try {
+    const response = await api.get('/supplies')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取卫勤物资数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
   }
 }
 
 // 战救效率统计数据
 export const getEfficiency = async () => {
-  await delay(500)
-  return {
-    currentCasualties: 320,
-    triageTime: 5,
-    surgeryWait: 18,
-    transportTime: 40
+  try {
+    const response = await api.get('/efficiency')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取战救效率数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
   }
 }
 
 // 医疗后送能力数据
 export const getTransport = async () => {
-  await delay(500)
-  return {
-    // 运输车数据
-    vehicles: {
-      total: 25,
-      available: 20,
-      inTransit: 3,
-      damaged: 2
-    },
-    // 无人机数据
-    drones: {
-      total: 12,
-      available: 8,
-      inTransit: 2,
-      damaged: 2
-    },
-    // 直升机数据
-    helicopters: {
-      total: 8,
-      available: 6,
-      inTransit: 1,
-      damaged: 1
-    },
-    // 医护力量
-    medicalStaff: {
-      total: 260,
-      available: 200,
-      inTransit: 60,
-      damaged: 0
-    },
-    // 总体可用率
-    availability: 78,
-    // 总体损耗率
-    lossRate: 12,
-    warning: '存在 5 起'
+  try {
+    const response = await api.get('/transport')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取医疗后送数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
   }
 }
 
 // 警示信息数据
 export const getAlertMessage = async () => {
-  await delay(500)
-  const alerts = [
-    '⚠️ 战救效率下降 15%',
-    '⚠️ 医疗后送饱和',
-    '⚠️ 关键物资库存不足',
-    '⚠️ 医护人员伤亡增加'
-  ]
-  return alerts[Math.floor(Math.random() * alerts.length)]
+  try {
+    const response = await api.get('/alert-message')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取警示信息失败')
+    }
+  } catch (error) {
+    handleApiError(error)
+  }
 }
 
 // 地图标记点数据
 export const getMapMarkers = async () => {
-  await delay(500)
-  return [
-    { position: [120.08, 30.20], name: '野战医院A', type: 'field' },
-    { position: [120.12, 30.24], name: '后方医院B', type: 'rear' },
-    { position: [120.06, 30.26], name: '地方医院C', type: 'local' },
-    { position: [120.14, 30.18], name: '救治点D', type: 'aid' }
-  ]
+  try {
+    const response = await api.get('/map-markers')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取地图标记点数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
+  }
 }
 
 // 后送路径数据
 export const getTransportRoutes = async () => {
-  await delay(500)
-  return {
-    startPoint: [120.08, 30.20], // 起点坐标
-    endPoint: [120.12, 30.24],   // 终点坐标
-    waypoints: [                 // 途经点（可选）
-      [120.10, 30.22]
-    ]
+  try {
+    const response = await api.get('/transport-routes')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取后送路径数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
   }
 }
 
-// 实时数据更新（模拟WebSocket或定时轮询）
+// 获取所有数据的综合接口
+export const getAllData = async () => {
+  try {
+    const response = await api.get('/all-data')
+    if (response.data.success) {
+      return response.data.data
+    } else {
+      throw new Error(response.data.message || '获取综合数据失败')
+    }
+  } catch (error) {
+    handleApiError(error)
+  }
+}
+
+// 实时数据更新（使用综合接口或分别调用）
 export const startRealTimeUpdates = (callback) => {
   const interval = setInterval(async () => {
     try {
-      const [medicalForces, supplies, efficiency, transport, alertMessage] = await Promise.all([
-        getMedicalForces(),
-        getSupplies(),
-        getEfficiency(),
-        getTransport(),
-        getAlertMessage()
-      ])
-      
-      callback({
-        medicalForces,
-        supplies,
-        efficiency,
-        transport,
-        alertMessage
-      })
+      // 优先使用综合接口，如果失败则分别调用各个接口
+      try {
+        const allData = await getAllData()
+        callback(allData)
+      } catch (error) {
+        console.warn('综合接口调用失败，使用分别调用:', error.message)
+        const [medicalForces, supplies, efficiency, transport, alertMessage] = await Promise.all([
+          getMedicalForces(),
+          getSupplies(),
+          getEfficiency(),
+          getTransport(),
+          getAlertMessage()
+        ])
+        
+        callback({
+          medicalForces,
+          supplies,
+          efficiency,
+          transport,
+          alertMessage
+        })
+      }
     } catch (error) {
       console.error('数据更新失败:', error)
     }

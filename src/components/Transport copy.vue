@@ -1,8 +1,8 @@
 <template>
   <div class="panel transport">
     <h3 class="panel-title">
-      <el-icon class="panel-icon"><Van /></el-icon>
-      🚚 医疗后送能力
+      <el-icon class="panel-icon"><Promotion /></el-icon>
+       医疗后送能力
     </h3>
 
     <div class="transport-list">
@@ -117,7 +117,7 @@
 </template>
 
 <script setup>
-import { Van } from '@element-plus/icons-vue'
+import { Van, Promotion } from '@element-plus/icons-vue'
 
 defineProps({
   transport: {
@@ -132,14 +132,14 @@ defineProps({
 .panel {
   background: rgba(26, 26, 46, 0.3);
   border: 1px solid #2a4a6b;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
 }
 
 .panel-title {
-  font-size: 24px; /* 缩小标题字体 */
+  font-size: 26px; /* 缩小标题字体 */
   font-weight: 600;
   text-align: center;
   margin: 0 0 12px 0; /* 减小下边距 */
@@ -154,12 +154,13 @@ defineProps({
 }
 
 .panel-icon {
-  font-size: 26px;
+  font-size: 28px;
+  text-shadow: 0 0 10px rgba(64, 158, 255, 0.5);
 }
 
 .transport .panel-icon {
-  color: #f56c6c;
-  text-shadow: 0 0 10px rgba(245, 108, 108, 0.5);
+  color: #409eff;
+  text-shadow: 0 0 10px rgba(64, 158, 255, 0.5);
 }
 
 /* 紧凑型运力列表样式 */
@@ -240,28 +241,31 @@ defineProps({
 .transport-warning {
   margin-top: 12px; /* 减小上边距 */
   padding: 10px 16px; /* 减小内边距 */
-  background: linear-gradient(135deg, #2d1b1b 0%, #4a1a1a 50%, #6b1a1a 100%);
-  border: 1px solid #ff4444;
+  background: rgba(26, 26, 46, 0.3); /* 与面板背景色相同 */
+  border: 1px solid #2a4a6b; /* 与面板边框色相同 */
   border-radius: 8px;
   display: flex;
   align-items: center;
   gap: 12px;
-  box-shadow: 0 4px 15px rgba(255, 68, 68, 0.3);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); /* 与面板阴影相同 */
+  backdrop-filter: blur(10px); /* 与面板毛玻璃效果相同 */
 }
 
 .warning-icon {
   font-size: 20px;
-  color: #ff6b6b;
+  color: #e6a23c; /* 使用橙色，与整体主题更协调 */
   flex-shrink: 0;
   animation: pulse 2s infinite;
 }
 
 .warning-content {
   flex: 1;
-  font-size: 13px; /* 稍微缩小字体 */
-  color: #ff9999;
+  font-size: 14px; /* 稍微缩小字体 */
+  color: hsl(0, 100%, 71%); /* 使用白色文字，与面板文字颜色一致 */
   line-height: 1.4;
+  font-weight: 600;
   margin: 0;
+  font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
 }
 
 @keyframes pulse {

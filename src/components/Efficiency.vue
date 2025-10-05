@@ -2,38 +2,53 @@
   <div class="panel efficiency">
     <h3 class="panel-title">
       <el-icon class="panel-icon"><TrendCharts /></el-icon>
-      📊 战救效率统计
+       战救效率统计
     </h3>
     <div class="efficiency-cards">
       <div class="efficiency-card">
         <div class="card-content">
           <div class="card-label">当前伤员数量</div>
-          <div class="card-value">{{ efficiency.currentCasualties }} 人</div>
+          <div class="card-value">
+            <span class="value-number">{{ efficiency.currentCasualties }}</span>&nbsp;
+            <span class="value-unit">人</span>
+          </div>
         </div>
       </div>
+
       <div class="efficiency-card">
         <div class="card-content">
           <div class="card-label">平均检伤分类时间</div>
-          <div class="card-value">{{ efficiency.triageTime }} 分钟</div>
+          <div class="card-value">
+            <span class="value-number">{{ efficiency.triageTime }}</span>&nbsp;
+            <span class="value-unit">分钟</span>
+          </div>
         </div>
       </div>
+
       <div class="efficiency-card">
         <div class="card-content">
           <div class="card-label">平均手术等待时间</div>
-          <div class="card-value">{{ efficiency.surgeryWait }} 分钟</div>
+          <div class="card-value">
+            <span class="value-number">{{ efficiency.surgeryWait }}</span>&nbsp;
+            <span class="value-unit">分钟</span>
+          </div>
         </div>
       </div>
+
       <div class="efficiency-card">
         <div class="card-content">
           <div class="card-label">平均后送周转时间</div>
-          <div class="card-value">{{ efficiency.transportTime }} 分钟</div>
+          <div class="card-value">
+            <span class="value-number">{{ efficiency.transportTime }}</span>&nbsp;
+            <span class="value-unit">分钟</span>
+          </div>
         </div>
       </div>
     </div>
     
     <!-- 实时伤员结构柱状图 -->
     <div class="casualty-chart">
-      <h4 class="chart-title">🤕 实时伤员结构</h4>
+      <h4 class="chart-title">实时伤员结构</h4>
       <div class="chart-container">
         <div class="chart-bars">
           <div class="chart-bar">
@@ -86,7 +101,7 @@ defineProps({
 .panel {
   background: rgba(26, 26, 46, 0.3);
   border: 1px solid #2a4a6b;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 16px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
@@ -164,6 +179,14 @@ defineProps({
   font-weight: 700;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
+
+.value-number {
+  font-size: 20px;
+  color: #409eff;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
 
 /* 实时伤员结构柱状图样式 */
 .casualty-chart {
